@@ -45,6 +45,14 @@ import heroImage from "@assets/generated_images/five_luxury_supercars_lined_up_f
 import yachtImage from "@assets/generated_images/luxury_yacht_in_dubai_marina.png";
 import suvImage from "@assets/stock_images/luxury_suv_black_mer_79016e67.jpg";
 import sportImage from "@assets/stock_images/red_ferrari_sports_c_60c5bd94.jpg";
+import dubaiImg from "@assets/stock_images/dubai_skyline,_abu_d_cbc28aa7.jpg";
+import abuDhabiImg from "@assets/stock_images/dubai_skyline,_abu_d_43901737.jpg";
+import sharjahImg from "@assets/stock_images/dubai_skyline,_abu_d_5e56b4ed.jpg";
+import ajmanImg from "@assets/stock_images/dubai_skyline,_abu_d_089aba6f.jpg";
+import fujairahImg from "@assets/stock_images/dubai_skyline,_abu_d_15ca0745.jpg";
+import step1Img from "@assets/stock_images/modern_vector_illust_69ed548a.jpg";
+import step2Img from "@assets/stock_images/modern_vector_illust_4dbc8340.jpg";
+import step3Img from "@assets/stock_images/modern_vector_illust_88012a12.jpg";
 import brand1 from "@assets/stock_images/luxury_car_brand_log_b357a37a.jpg";
 import brand2 from "@assets/stock_images/luxury_car_brand_log_6d7ae029.jpg";
 import brand3 from "@assets/stock_images/luxury_car_brand_log_244afc9d.jpg";
@@ -90,13 +98,13 @@ export default function Home() {
       {/* 1. Header (Sticky & Transparent) */}
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
+          isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-4" : "bg-white/10 backdrop-blur-sm py-6"
         }`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
           <Link href="/">
             <a className={`text-2xl font-serif font-bold tracking-tighter ${isScrolled ? "text-primary" : "text-white"}`}>
-              RentAnyCar<span className={isScrolled ? "text-foreground" : "text-white/80"}>Dubai</span>
+              RentAnyCar<span className={isScrolled ? "text-foreground" : "text-white"}>Dubai</span>
             </a>
           </Link>
 
@@ -117,17 +125,17 @@ export default function Home() {
 
           {/* Right Side Actions */}
           <div className="hidden lg:flex items-center gap-4">
-            <div className={`flex items-center gap-4 text-xs font-medium ${isScrolled ? "text-foreground" : "text-white/80"}`}>
-              <button className="flex items-center gap-1 hover:text-primary">ENG <ChevronDown className="w-3 h-3" /></button>
-              <button className="flex items-center gap-1 hover:text-primary">AED <ChevronDown className="w-3 h-3" /></button>
-              <button className="flex items-center gap-1 hover:text-primary">Dubai <ChevronDown className="w-3 h-3" /></button>
+            <div className={`flex items-center gap-4 text-xs font-medium ${isScrolled ? "text-foreground" : "text-white"}`}>
+              <button className="flex items-center gap-1 hover:text-primary font-bold">ENG <ChevronDown className="w-3 h-3" /></button>
+              <button className="flex items-center gap-1 hover:text-primary font-bold">AED <ChevronDown className="w-3 h-3" /></button>
+              <button className="flex items-center gap-1 hover:text-primary font-bold">Dubai <ChevronDown className="w-3 h-3" /></button>
             </div>
             <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-6">Book Now</Button>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="lg:hidden text-white" 
+            className="lg:hidden" 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className={isScrolled ? "text-black" : "text-white"} /> : <Menu className={isScrolled ? "text-black" : "text-white"} />}
@@ -156,19 +164,19 @@ export default function Home() {
       </header>
 
       {/* 2. Hero Section */}
-      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Bright Background Image with Strong Overlay for Readability */}
         <div className="absolute inset-0 z-0">
           <img src={heroImage} alt="Luxury Car Dubai" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        <div className="container relative z-10 text-center">
+        <div className="container relative z-10 text-center -mt-20">
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl font-thin font-serif mb-4 leading-tight text-foreground"
+            className="text-4xl md:text-6xl font-serif font-bold mb-4 leading-tight text-white"
           >
             Premium Car Rentals in Dubai
           </motion.h1>
@@ -176,7 +184,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-700 mb-8 font-light"
+            className="text-lg md:text-xl text-white/90 mb-8 font-light"
           >
             Luxury, Sports & Economy Cars at the Best Prices
           </motion.p>
@@ -254,56 +262,84 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. How It Works - Modern Design */}
-      <section className="py-32 bg-gradient-to-b from-gray-50 to-white">
+      {/* 5. How It Works - Premium Modern Flow */}
+      <section className="py-16 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-24">
             <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 font-serif">How It Works</h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-primary to-primary/50 mx-auto mb-6"></div>
-              <p className="text-gray-500 text-lg max-w-2xl mx-auto">Get your dream car in three simple steps</p>
+              <h2 className="text-4xl font-thin font-serif mb-4">The Seamless Experience</h2>
+              <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light italic">Your journey to luxury starts here</p>
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            {/* Connection Lines */}
-            <div className="hidden md:block absolute top-32 left-1/4 right-1/4 h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent transform -translate-y-1/2" style={{ width: '66.666%', left: '16.666%' }} />
-
-            {[
-              { icon: Compass, title: "Choose Brand & Model", desc: "Browse our extensive fleet of luxury and sports cars.", number: 1 },
-              { icon: CreditCard, title: "Make Payment", desc: "Secure and fast payment options for your convenience.", number: 2 },
-              { icon: CheckCircle, title: "Booking Confirmed", desc: "Receive instant confirmation and get ready to drive.", number: 3 },
-            ].map((step, idx) => (
-              <motion.div 
-                key={idx} 
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.2 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center group hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 relative z-10">
-                  {/* Step Number */}
-                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-                    <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
-                      {step.number}
+          <div className="relative">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 relative z-10">
+              {[
+                { 
+                  icon: Car, 
+                  title: "1. Select Category", 
+                  step: "01",
+                  desc: "Browse our premium fleet and select your preferred car category or brand.",
+                  color: "from-blue-500/10 to-transparent"
+                },
+                { 
+                  icon: Compass, 
+                  title: "2. Select Model", 
+                  step: "02",
+                  desc: "Choose the specific luxury model that fits your style and requirements.",
+                  color: "from-primary/10 to-transparent"
+                },
+                { 
+                  icon: CreditCard, 
+                  title: "3. Make Payment", 
+                  step: "03",
+                  desc: "Confirm your booking with our secure and fast payment process.",
+                  color: "from-amber-500/10 to-transparent"
+                },
+              ].map((item, idx) => (
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: idx * 0.2 }}
+                  viewport={{ once: true }}
+                  className="group relative"
+                >
+                  <div className={`absolute -inset-4 bg-gradient-to-br ${item.color} rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`} />
+                  
+                  <div className="relative flex flex-col items-center">
+                    <div className="mb-8 relative">
+                      <div className="w-24 h-24 rounded-full bg-white shadow-2xl flex items-center justify-center group-hover:bg-primary transition-all duration-500 relative z-10 border border-gray-50">
+                        <item.icon className="w-10 h-10 text-primary group-hover:text-white transition-colors duration-500" />
+                      </div>
+                      <span className="absolute -top-6 -right-6 text-7xl font-serif font-black text-gray-200/80 group-hover:text-primary/20 transition-all duration-500 -z-0">
+                        {item.step}
+                      </span>
                     </div>
-                  </div>
 
-                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-primary/10 to-primary/5 rounded-full flex items-center justify-center mb-6 group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-500 mt-4">
-                    <step.icon className="w-10 h-10 text-primary group-hover:scale-110 transition-transform duration-500" />
+                    <h3 className="text-2xl font-serif font-bold mb-4 text-foreground text-center">{item.title}</h3>
+                    <p className="text-gray-500 leading-relaxed text-center font-light text-sm md:text-base max-w-sm">
+                      {item.desc}
+                    </p>
+                    
+                    <div className="mt-8 w-12 h-1 bg-gray-100 group-hover:w-24 group-hover:bg-primary transition-all duration-500" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-foreground">{step.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{step.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="mt-24 text-center">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-12 h-14 text-lg shadow-xl hover:shadow-primary/20 transition-all hover:-translate-y-1">
+              Start Your Booking
+            </Button>
           </div>
         </div>
       </section>
 
       {/* 6. Car Categories - One Row with Silhouette Icons */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
@@ -333,17 +369,17 @@ export default function Home() {
       </section>
 
       {/* 7. Bestseller Cars */}
-      <section className="py-20 bg-gray-50" id="rentals">
+      <section className="py-16 bg-gray-50" id="rentals">
         <div className="container mx-auto px-4">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h2 className="text-4xl font-bold mb-2 font-serif">Our Bestsellers</h2>
-              <p className="text-gray-500">Top rated vehicles chosen by our premium clients</p>
-            </div>
-            <Button variant="outline" className="hidden md:flex">View All Cars</Button>
+          <div className="text-center mb-16">
+            <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+              <h2 className="text-4xl font-thin font-serif mb-4">Our Bestsellers</h2>
+              <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light italic">Top rated vehicles chosen by our premium clients</p>
+            </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <CarCard 
               image={suvImage} 
               name="Mercedes-Benz G63 AMG" 
@@ -366,15 +402,21 @@ export default function Home() {
               features={{ seats: 5, fuel: 'Petrol', trans: 'Auto' }}
             />
           </div>
+
+          <div className="mt-12 text-center">
+            <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
+              View All Bestsellers
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* 8. Brands - Modern with Logos & Heading */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-              <h2 className="text-4xl font-bold mb-4 font-serif">Premium Brands</h2>
+              <h2 className="text-4xl font-thin font-serif mb-4">Premium Brands</h2>
               <div className="w-24 h-1 bg-primary mx-auto"></div>
             </motion.div>
           </div>
@@ -397,10 +439,16 @@ export default function Home() {
       </section>
 
       {/* 9. Sports Cars */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center font-serif">Sports Cars Collection</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="text-center mb-16">
+            <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+              <h2 className="text-4xl font-thin font-serif mb-4">Sports Car Collection</h2>
+              <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light italic">Feel the adrenaline with our performance fleet</p>
+            </motion.div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
              {[1, 2, 3, 4].map((item) => (
                 <CarCard 
                   key={item}
@@ -412,11 +460,17 @@ export default function Home() {
                 />
              ))}
           </div>
+
+          <div className="mt-12 text-center">
+            <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
+              View All Sports Cars
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* 10. Promo Banner */}
-      <section className="relative py-32 bg-black overflow-hidden">
+      {/* 10. Promo Banner - Moved Above Luxury Collection */}
+      <section className="relative py-24 bg-black overflow-hidden">
         <div className="absolute inset-0 opacity-40">
            <img src={sportImage} className="w-full h-full object-cover" alt="Promo" />
         </div>
@@ -429,38 +483,152 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 11. Additional Services */}
-      <section className="py-20 bg-white">
+      {/* 9.5 Luxury Car Collection */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center font-serif">Premium Services Included</h2>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          <div className="text-center mb-16">
+            <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+              <h2 className="text-4xl font-thin font-serif mb-4">Luxury Car Collection</h2>
+              <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light italic">The pinnacle of elegance and comfort</p>
+            </motion.div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+             {[1, 2, 3, 4].map((item) => (
+                <CarCard 
+                  key={item}
+                  image={suvImage} 
+                  name="Rolls Royce Ghost" 
+                  price="5,500" 
+                  compact
+                  features={{ seats: 4, fuel: 'Petrol', trans: 'Auto' }}
+                />
+             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
+              View All Luxury Cars
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* 11. Premium Services - Redesigned Banner */}
+      <section className="py-16 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="bg-gray-900 rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-2xl">
+            {/* Abstract background shapes */}
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/10 skew-x-12 translate-x-1/4" />
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
+            
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+                  <h2 className="text-4xl md:text-5xl font-serif font-thin text-white mb-6 leading-tight">
+                    Premium <span className="text-primary font-bold">Services</span>
+                  </h2>
+                  <div className="w-24 h-1 bg-primary mb-8" />
+                  <p className="text-gray-400 text-lg mb-10 font-light leading-relaxed">
+                    Experience unparalleled luxury with our comprehensive suite of premium car rental services, tailored to your every need.
+                  </p>
+                </motion.div>
+                
+                <div className="grid grid-cols-2 gap-6">
+                  {[
+                    { icon: ShieldCheck, label: "Full Insurance" },
+                    { icon: Cog, label: "Roadside Assist" },
+                    { icon: Car, label: "Add. Driver" },
+                    { icon: Fuel, label: "Maintenance" }
+                  ].map((srv, i) => (
+                    <motion.div 
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: i * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-center gap-4 group"
+                    >
+                      <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary transition-all">
+                        <srv.icon className="w-6 h-6 text-primary group-hover:text-white" />
+                      </div>
+                      <span className="text-white font-medium text-sm md:text-base">{srv.label}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="relative">
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+                >
+                  <img src={suvImage} alt="Premium Service" className="w-full h-full object-cover" />
+                </motion.div>
+                <div className="absolute -bottom-8 -right-8 bg-primary p-8 rounded-2xl shadow-xl hidden md:block">
+                  <div className="text-white">
+                    <div className="text-3xl font-bold mb-1">24/7</div>
+                    <div className="text-xs uppercase tracking-widest font-bold opacity-80">VIP Support</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 11.5 Rent In UAE - New Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+              <h2 className="text-4xl font-thin font-serif mb-4">Rent In UAE</h2>
+              <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light italic">Experience luxury across all emirates</p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {[
-              { icon: Car, label: "Add. Driver" },
-              { icon: Cog, label: "Roadside Assist" },
-              { icon: ShieldCheck, label: "Full Insurance" },
-              { icon: Fuel, label: "Maintenance" },
-              { icon: Phone, label: "24/7 Support" },
-            ].map((srv, i) => (
+              { name: "Dubai", count: 120, img: dubaiImg },
+              { name: "Abu Dhabi", count: 85, img: abuDhabiImg },
+              { name: "Sharjah", count: 45, img: sharjahImg },
+              { name: "Ajman", count: 25, img: ajmanImg },
+              { name: "Fujairah", count: 15, img: fujairahImg }
+            ].map((loc, i) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl text-center shadow-sm hover:shadow-md hover:from-primary/5 hover:to-primary/2 transition-all duration-300 border border-gray-100"
+                className="group relative h-72 rounded-[2rem] overflow-hidden cursor-pointer"
               >
-                <srv.icon className="w-8 h-8 mx-auto mb-4 text-primary" />
-                <h4 className="font-semibold text-sm text-foreground">{srv.label}</h4>
+                <img src={loc.img} alt={loc.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-8 flex flex-col justify-end">
+                  <h4 className="text-2xl font-bold text-white mb-1">{loc.name}</h4>
+                  <p className="text-white/70 text-sm">{loc.count} Cars Available</p>
+                </div>
               </motion.div>
             ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
+              View All Locations
+            </Button>
           </div>
         </div>
       </section>
 
       {/* 12. Reviews */}
-      <section className="py-20 bg-gray-50 text-center">
+      <section className="py-16 bg-gray-50 text-center">
         <div className="container mx-auto px-4 max-w-4xl">
-           <h2 className="text-3xl font-bold mb-12 font-serif">What Our Clients Say</h2>
+           <h2 className="text-4xl font-thin font-serif mb-4">What Our Clients Say</h2>
+           <div className="w-24 h-1 bg-primary mx-auto mb-12"></div>
            <Carousel className="w-full">
               <CarouselContent>
                 {[1, 2, 3].map((_, i) => (
@@ -485,113 +653,115 @@ export default function Home() {
       </section>
 
       {/* 13. Yacht Banner */}
-      <section className="relative h-[500px] flex items-center" id="yacht">
+      <section className="relative h-[600px] flex items-center justify-center text-center" id="yacht">
         <div className="absolute inset-0">
           <img src={yachtImage} alt="Yacht" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="container relative z-10 text-white">
-          <div className="max-w-xl">
-            <h2 className="text-5xl font-serif font-bold mb-6">Luxury Yacht Rentals <br/> in Dubai</h2>
-            <p className="text-lg mb-8 text-gray-200">Sail the Arabian Gulf in ultimate luxury. Private charters, parties, and sunset cruises available.</p>
-            <Button size="lg" className="bg-white text-black hover:bg-gray-100 border-none">Explore Yacht Services</Button>
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-5xl font-serif font-thin mb-6">Luxury Yacht Rentals <br/> in Dubai</h2>
+            <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+            <p className="text-lg mb-8 text-white/90">Sail the Arabian Gulf in ultimate luxury. Private charters, parties, and sunset cruises available.</p>
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white border-none rounded-full px-10 h-14 text-lg">
+              Explore Yacht Services
+            </Button>
           </div>
         </div>
       </section>
 
       {/* 14. FAQ */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <h2 className="text-3xl font-bold mb-12 text-center font-serif">Frequently Asked Questions</h2>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger>How do I rent a car in Dubai?</AccordionTrigger>
-              <AccordionContent>
-                Simply browse our collection, choose your dates, and book online. You'll need a valid driver's license, passport, and credit card.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>Is insurance included in the price?</AccordionTrigger>
-              <AccordionContent>
-                Yes, basic comprehensive insurance is included. Additional coverage options are available during booking.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Do you offer free delivery?</AccordionTrigger>
-              <AccordionContent>
-                We offer free delivery and pickup for all rentals of 2 days or more within Dubai city limits.
-              </AccordionContent>
-            </AccordionItem>
-             <AccordionItem value="item-4">
-              <AccordionTrigger>What documents are required?</AccordionTrigger>
-              <AccordionContent>
-                For tourists: Passport, Visit Visa, Home Country Driving License, and IDP. For residents: Emirates ID and UAE Driving License.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-thin font-serif mb-4">Frequently Asked Questions</h2>
+            <div className="w-24 h-1 bg-primary mx-auto"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <Accordion type="single" collapsible className="w-full space-y-4">
+                <AccordionItem value="item-1" className="border rounded-xl px-4 bg-gray-50/50 border-none">
+                  <AccordionTrigger className="hover:no-underline font-semibold text-left">How do I rent a car in Dubai?</AccordionTrigger>
+                  <AccordionContent className="text-gray-600">
+                    Simply browse our collection, choose your dates, and book online. You'll need a valid driver's license, passport, and credit card.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-2" className="border rounded-xl px-4 bg-gray-50/50 border-none">
+                  <AccordionTrigger className="hover:no-underline font-semibold text-left">Is insurance included in the price?</AccordionTrigger>
+                  <AccordionContent className="text-gray-600">
+                    Yes, basic comprehensive insurance is included. Additional coverage options are available during booking.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+            <div className="space-y-4">
+              <Accordion type="single" collapsible className="w-full space-y-4">
+                <AccordionItem value="item-3" className="border rounded-xl px-4 bg-gray-50/50 border-none">
+                  <AccordionTrigger className="hover:no-underline font-semibold text-left">Do you offer free delivery?</AccordionTrigger>
+                  <AccordionContent className="text-gray-600">
+                    We offer free delivery and pickup for all rentals of 2 days or more within Dubai city limits.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-4" className="border rounded-xl px-4 bg-gray-50/50 border-none">
+                  <AccordionTrigger className="hover:no-underline font-semibold text-left">What documents are required?</AccordionTrigger>
+                  <AccordionContent className="text-gray-600">
+                    For tourists: Passport, Visit Visa, Home Country Driving License, and IDP. For residents: Emirates ID and UAE Driving License.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 15. Footer */}
-      <footer className="bg-gray-900 text-white pt-20 pb-10">
+      <footer className="bg-gray-100 py-20 border-t">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            <div>
-              <div className="text-2xl font-serif font-bold mb-6 text-primary">RentAnyCarDubai</div>
-              <p className="text-gray-400 mb-6">
-                The premier luxury car rental service in Dubai. Experience excellence, reliability, and style with our premium fleet.
+            <div className="space-y-6">
+              <div className="text-2xl font-serif font-bold tracking-tighter text-primary">
+                RentAnyCar<span className="text-foreground">Dubai</span>
+              </div>
+              <p className="text-gray-500 leading-relaxed">
+                The premier luxury car rental service in Dubai, offering an elite fleet for the most discerning clients.
               </p>
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"><Instagram className="w-5 h-5" /></div>
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"><Facebook className="w-5 h-5" /></div>
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"><Twitter className="w-5 h-5" /></div>
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"><Linkedin className="w-5 h-5" /></div>
+              <div className="flex items-center gap-4">
+                <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:bg-primary hover:text-white transition-all"><Instagram className="w-5 h-5" /></a>
+                <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:bg-primary hover:text-white transition-all"><Facebook className="w-5 h-5" /></a>
+                <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:bg-primary hover:text-white transition-all"><Twitter className="w-5 h-5" /></a>
               </div>
             </div>
-
+            
             <div>
-              <h4 className="font-bold text-lg mb-6">Quick Links</h4>
-              <ul className="space-y-3 text-gray-400">
-                <li><a href="#" className="hover:text-primary">About Us</a></li>
-                <li><a href="#" className="hover:text-primary">Car Rental</a></li>
-                <li><a href="#" className="hover:text-primary">Yacht Rental</a></li>
-                <li><a href="#" className="hover:text-primary">Offers</a></li>
-                <li><a href="#" className="hover:text-primary">Blog</a></li>
-              </ul>
-            </div>
-
-             <div>
-              <h4 className="font-bold text-lg mb-6">Locations</h4>
-              <ul className="space-y-3 text-gray-400">
-                <li><a href="#" className="hover:text-primary">Dubai Marina</a></li>
-                <li><a href="#" className="hover:text-primary">Downtown Dubai</a></li>
-                <li><a href="#" className="hover:text-primary">Jumeirah Beach</a></li>
-                <li><a href="#" className="hover:text-primary">Palm Jumeirah</a></li>
-                <li><a href="#" className="hover:text-primary">Dubai Airport (DXB)</a></li>
+              <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-gray-400">Quick Links</h4>
+              <ul className="space-y-4">
+                {navLinks.map(link => (
+                  <li key={link.name}><a href={link.href} className="text-gray-600 hover:text-primary transition-colors">{link.name}</a></li>
+                ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold text-lg mb-6">Contact</h4>
-              <ul className="space-y-4 text-gray-400">
-                <li className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-primary shrink-0" />
-                  <span>Elite Business Center, Al Barsha, Dubai, UAE</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-primary shrink-0" />
-                  <span>+971 50 123 4567</span>
-                </li>
+              <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-gray-400">Categories</h4>
+              <ul className="space-y-4">
+                <li><a href="#" className="text-gray-600 hover:text-primary transition-colors">Luxury Cars</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-primary transition-colors">Sports Cars</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-primary transition-colors">SUVs & 4x4</a></li>
+                <li><a href="#" className="text-gray-600 hover:text-primary transition-colors">Electric Vehicles</a></li>
               </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold mb-6 uppercase text-xs tracking-widest text-gray-400">Newsletter</h4>
+              <p className="text-sm text-gray-500 mb-4">Subscribe to get special offers and news.</p>
+              <div className="flex gap-2">
+                <Input placeholder="Your email" className="bg-white" />
+                <Button className="bg-primary hover:bg-primary/90">Join</Button>
+              </div>
             </div>
           </div>
-
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-            <div>&copy; 2025 RentAnyCarDubai. All Rights Reserved.</div>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-white">Privacy Policy</a>
-              <a href="#" className="hover:text-white">Terms & Conditions</a>
-            </div>
+          <div className="pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
+            © 2025 RentAnyCar Dubai. All rights reserved.
           </div>
         </div>
       </footer>
