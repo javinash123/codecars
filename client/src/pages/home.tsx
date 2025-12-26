@@ -24,7 +24,8 @@ import {
   Linkedin,
   Zap,
   Compass,
-  Award
+  Award,
+  MessageCircle
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -58,6 +59,10 @@ import brand2 from "@assets/stock_images/luxury_car_brand_log_6d7ae029.jpg";
 import brand3 from "@assets/stock_images/luxury_car_brand_log_244afc9d.jpg";
 import brand4 from "@assets/stock_images/luxury_car_brand_log_6548590a.jpg";
 import brand5 from "@assets/stock_images/luxury_car_brand_log_56156f1f.jpg";
+import ferrariImage from "@assets/stock_images/red_ferrari_sports_c_4af35155.jpg";
+import mclarenBlueImage from "@assets/stock_images/blue_mclaren_sports__5489a8b2.jpg";
+import mclarenYellowImage from "@assets/stock_images/yellow_mclaren_sport_08c298e0.jpg";
+import lamborghiniImage from "@assets/stock_images/red_lamborghini_spor_7ae12b0f.jpg";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -447,13 +452,20 @@ export default function Home() {
             </motion.div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-             {[1, 2, 3, 4].map((item) => (
+             {[
+               { name: 'Ferrari', price: '8,000', offer: '7,200', image: ferrariImage },
+               { name: 'McLaren', price: '4,800', offer: '4,410', image: mclarenBlueImage },
+               { name: 'McLaren', price: '3,300', offer: '2,970', image: mclarenYellowImage },
+               { name: 'Lamborghini', price: '4,000', offer: '2,600', image: lamborghiniImage }
+             ].map((car, idx) => (
                 <CarCard 
-                  key={item}
-                  image={sportImage} 
-                  name="Lamborghini Huracan" 
-                  price="3,800" 
+                  key={idx}
+                  image={car.image} 
+                  name={car.name} 
+                  price={car.price}
+                  offerPrice={car.offer}
                   compact
+                  sports
                   features={{ seats: 2, fuel: 'Petrol', trans: 'Auto' }}
                 />
              ))}
@@ -706,7 +718,7 @@ const StandardIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-function CarCard({ image, name, price, badge, compact = false, features }: { image: string, name: string, price: string, badge?: string, compact?: boolean, features?: any }) {
+function CarCard({ image, name, price, badge, compact = false, features, offerPrice, sports = false }: { image: string, name: string, price: string, badge?: string, compact?: boolean, features?: any, offerPrice?: string, sports?: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -717,6 +729,11 @@ function CarCard({ image, name, price, badge, compact = false, features }: { ima
       <Card className="overflow-hidden group border-none shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
         <div className="relative h-56 overflow-hidden bg-gray-100">
           <img src={image} alt={name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          {sports && (
+            <div className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              Free Delivery
+            </div>
+          )}
           {badge && (
             <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
               {badge}
@@ -734,11 +751,35 @@ function CarCard({ image, name, price, badge, compact = false, features }: { ima
              </div>
           )}
 
-          <div className="flex items-center justify-between">
-            <div>
-              <span className="text-primary font-bold text-lg">AED {price}</span>
-              <span className="text-gray-400 text-sm"> / day</span>
+          {sports && offerPrice && (
+            <div className="mb-4 space-y-2 pb-4 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <span className="text-gray-400 text-sm line-through">AED {price}/day</span>
+                <span className="text-green-600 font-bold text-sm">Save</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="text-primary font-bold text-xl">AED {offerPrice}</span>
+                <span className="text-gray-500 text-xs">/month</span>
+              </div>
             </div>
+          )}
+
+          {sports && (
+            <div className="mb-4 space-y-1 text-xs text-gray-600 pb-4 border-b border-gray-100">
+              <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-600" /> 1 day rental available</div>
+              <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-600" /> Deposit: AED 0.00</div>
+              <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-600" /> Insurance included</div>
+              <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-600" /> 5% VAT included</div>
+            </div>
+          )}
+
+          <div className="flex items-center justify-between">
+            {!sports && (
+              <div>
+                <span className="text-primary font-bold text-lg">AED {price}</span>
+                <span className="text-gray-400 text-sm"> / day</span>
+              </div>
+            )}
             <Button size="sm" className="bg-primary hover:bg-primary/90 text-white rounded-full">Book Now</Button>
           </div>
         </CardContent>
