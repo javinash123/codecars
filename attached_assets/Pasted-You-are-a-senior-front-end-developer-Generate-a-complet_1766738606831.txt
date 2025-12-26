@@ -1,0 +1,282 @@
+You are a senior front-end developer.
+Generate a **complete, fully responsive car rental website homepage** for **RentAnyCarDubai**.
+
+---
+
+## 🔧 Technology & Files
+
+Create **three separate files**:
+
+1. `index.html`
+2. `style.css`
+3. `script.js`
+
+---
+
+## 🛠️ Tech Stack Requirements
+
+* HTML5 (semantic tags)
+* CSS3
+* Bootstrap 5 (use CDN)
+* JavaScript
+* jQuery (use CDN)
+* Font Awesome icons (CDN)
+* Google Fonts
+
+---
+
+## 🎨 Design & Branding
+
+* Website Name: **RentAnyCarDubai**
+* Brand Color (Primary): **#7d7043**
+* Light mode only (no dark mode)
+* Modern, professional, premium luxury design
+* Clean white background with good spacing
+* Smooth animations & hover effects
+* Mobile-first and fully responsive
+
+---
+
+## 🌍 Global Website Features
+
+* Language selector dropdown (UI only)
+* Currency selector dropdown (UI only)
+* Location selector dropdown (UI only)
+* Sticky transparent header over hero image
+* SEO-friendly HTML structure
+
+---
+
+## 📄 HOMEPAGE STRUCTURE (IMPLEMENT ALL SECTIONS)
+
+---
+
+### 1️⃣ Header (Over Hero Section)
+
+* Transparent header positioned over hero image
+* Sticky on scroll
+* Logo text: **RentAnyCarDubai**
+* Navigation menu:
+
+  * Home
+  * Car Rental
+  * Airport Transfer
+  * Yacht Rental
+  * About Us
+  * Contact
+* Right-side dropdowns:
+
+  * Language
+  * Currency
+  * Location
+* Primary CTA button:
+  **Book Now** (brand color)
+
+---
+
+### 2️⃣ Hero Section
+
+* Full-width hero image from top
+* Dark overlay for readability
+* Main heading:
+  **Premium Car Rentals in Dubai**
+* Subheading:
+  **Luxury, Sports & Economy Cars at the Best Prices**
+* Smooth fade-in animation
+* Header should appear on top of hero image
+
+---
+
+### 3️⃣ Services Tabs
+
+Create tab buttons using Bootstrap + JavaScript:
+
+* Car Rental (default active)
+* Airport Transfer
+* Flight Ticket
+* Hotel
+* Yacht
+
+Tabs should switch content smoothly.
+
+---
+
+### 4️⃣ Car Rental Search Bar (Inside Car Rental Tab)
+
+Search form with:
+
+* Dropdown: Brand / Category
+* Dropdown: Model
+* Dropdown: Location
+* Search button (brand color)
+* Modern UI with icons inside inputs
+
+---
+
+### 5️⃣ How It Works Section
+
+Three steps with icons:
+
+1. Choose Brand & Model
+2. Make Payment
+3. Booking Confirmed
+
+Responsive layout (horizontal desktop, vertical mobile)
+
+---
+
+### 6️⃣ Car Categories Section
+
+Show icon cards for:
+
+* SUV
+* Convertible
+* Luxury
+* Sports
+* Sedan
+* Economy
+
+Icons must be consistent and synced.
+
+---
+
+### 7️⃣ Bestseller Cars Section
+
+Title: **Our Bestsellers**
+
+Car cards must include:
+
+* Car image
+* “Free Delivery” badge overlay
+* Car name
+* Price per day
+* Key features (seats, transmission, fuel)
+* “Book Now” button (brand color)
+* Hover animation
+
+---
+
+### 8️⃣ Car Brands Section
+
+* Display popular car brand logos
+* Grid or slider layout
+* Equal logo sizes
+* Clean white background
+
+---
+
+### 9️⃣ Sports Cars Section
+
+Title: **Sports Cars**
+
+* Show sports cars only
+* Same card layout as bestseller section
+* Responsive grid
+
+---
+
+### 🔟 Promotional Banner (CTA)
+
+* Full-width banner with luxury car image
+* Heading:
+  **Explore Our Exclusive Car Collection**
+* CTA Button:
+  **Explore Cars**
+* Brand-colored button with hover effect
+
+---
+
+### 1️⃣1️⃣ Additional Services Section
+
+Display icon cards for:
+
+* Additional Driver
+* Roadside Assistance
+* Insurance Coverage
+* Vehicle Maintenance
+* 24/7 Customer Support
+
+---
+
+### 1️⃣2️⃣ Customer Reviews Section
+
+* Star ratings
+* Customer name
+* Review text
+* Carousel/slider using JavaScript or Bootstrap
+* Smooth transitions
+
+---
+
+### 1️⃣3️⃣ Yacht Services Banner
+
+* Premium yacht image
+* Heading:
+  **Luxury Yacht Rentals in Dubai**
+* CTA Button:
+  **Explore Yacht Services**
+
+---
+
+### 1️⃣4️⃣ FAQ Section
+
+Use Bootstrap accordion:
+
+* How do I rent a car?
+* Is insurance included?
+* What documents are required?
+* Do you offer free delivery?
+
+---
+
+### 1️⃣5️⃣ Footer
+
+Footer must include:
+
+* Logo
+* 2-line company description
+* Quick Links
+* All Locations list
+* Terms & Conditions
+* Privacy Policy
+* Social media icons
+* Copyright text:
+  © RentAnyCarDubai. All Rights Reserved.
+
+---
+
+## ⚙️ Functional Requirements
+
+* Tabs must work
+* FAQ accordion must work
+* Testimonials slider must work
+* Mobile menu must work
+* Smooth scrolling
+
+---
+
+## 🧠 Coding Instructions
+
+* Use Bootstrap grid system correctly
+* Use placeholder images
+* Comment the code
+* Keep files clean and readable
+* Ensure fast loading
+* Use brand color #7d7043 consistently
+
+---
+
+## ✅ OUTPUT FORMAT
+
+* Provide complete code for:
+
+  * `index.html`
+  * `style.css`
+  * `script.js`
+* Do NOT omit any section
+* Do NOT summarize — generate full code
+
+---
+
+# 🔥 END OF PROMPT
+
