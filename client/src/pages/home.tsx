@@ -102,10 +102,8 @@ export default function Home() {
         }`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <Link href="/">
-            <a className={`text-2xl font-serif font-bold tracking-tighter ${isScrolled ? "text-primary" : "text-white"}`}>
-              RentAnyCar<span className={isScrolled ? "text-foreground" : "text-white"}>Dubai</span>
-            </a>
+          <Link href="/" className={`text-2xl font-serif font-bold tracking-tighter ${isScrolled ? "text-primary" : "text-white"}`}>
+            RentAnyCar<span className={isScrolled ? "text-foreground" : "text-white"}>Dubai</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -344,7 +342,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
               <h2 className="text-4xl font-thin font-serif mb-4">Car Categories</h2>
-              <div className="w-24 h-1 bg-primary mx-auto"></div>
+              <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
             </motion.div>
           </div>
 
@@ -417,7 +415,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
               <h2 className="text-4xl font-thin font-serif mb-4">Premium Brands</h2>
-              <div className="w-24 h-1 bg-primary mx-auto"></div>
+              <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
             </motion.div>
           </div>
 
@@ -514,116 +512,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 11. Premium Services - Redesigned Banner */}
-      <section className="py-16 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="bg-gray-900 rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-2xl">
-            {/* Abstract background shapes */}
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/10 skew-x-12 translate-x-1/4" />
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
-            
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-                  <h2 className="text-4xl md:text-5xl font-serif font-thin text-white mb-6 leading-tight">
-                    Premium <span className="text-primary font-bold">Services</span>
-                  </h2>
-                  <div className="w-24 h-1 bg-primary mb-8" />
-                  <p className="text-gray-400 text-lg mb-10 font-light leading-relaxed">
-                    Experience unparalleled luxury with our comprehensive suite of premium car rental services, tailored to your every need.
-                  </p>
-                </motion.div>
-                
-                <div className="grid grid-cols-2 gap-6">
-                  {[
-                    { icon: ShieldCheck, label: "Full Insurance" },
-                    { icon: Cog, label: "Roadside Assist" },
-                    { icon: Car, label: "Add. Driver" },
-                    { icon: Fuel, label: "Maintenance" }
-                  ].map((srv, i) => (
-                    <motion.div 
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: i * 0.1 }}
-                      viewport={{ once: true }}
-                      className="flex items-center gap-4 group"
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-primary transition-all">
-                        <srv.icon className="w-6 h-6 text-primary group-hover:text-white" />
-                      </div>
-                      <span className="text-white font-medium text-sm md:text-base">{srv.label}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="relative">
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                  className="rounded-3xl overflow-hidden shadow-2xl border border-white/10"
-                >
-                  <img src={suvImage} alt="Premium Service" className="w-full h-full object-cover" />
-                </motion.div>
-                <div className="absolute -bottom-8 -right-8 bg-primary p-8 rounded-2xl shadow-xl hidden md:block">
-                  <div className="text-white">
-                    <div className="text-3xl font-bold mb-1">24/7</div>
-                    <div className="text-xs uppercase tracking-widest font-bold opacity-80">VIP Support</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 11.5 Rent In UAE - New Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-              <h2 className="text-4xl font-thin font-serif mb-4">Rent In UAE</h2>
-              <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light italic">Experience luxury across all emirates</p>
-            </motion.div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {[
-              { name: "Dubai", count: 120, img: dubaiImg },
-              { name: "Abu Dhabi", count: 85, img: abuDhabiImg },
-              { name: "Sharjah", count: 45, img: sharjahImg },
-              { name: "Ajman", count: 25, img: ajmanImg },
-              { name: "Fujairah", count: 15, img: fujairahImg }
-            ].map((loc, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="group relative h-72 rounded-[2rem] overflow-hidden cursor-pointer"
-              >
-                <img src={loc.img} alt={loc.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-8 flex flex-col justify-end">
-                  <h4 className="text-2xl font-bold text-white mb-1">{loc.name}</h4>
-                  <p className="text-white/70 text-sm">{loc.count} Cars Available</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          <div className="mt-12 text-center">
-            <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
-              View All Locations
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* 12. Reviews */}
       <section className="py-16 bg-gray-50 text-center">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -715,7 +603,7 @@ export default function Home() {
       </section>
 
       {/* 15. Footer */}
-      <footer className="bg-gray-100 py-20 border-t">
+      <footer className="bg-gray-100 py-12 border-t">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="space-y-6">
