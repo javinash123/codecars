@@ -387,21 +387,27 @@ export default function Home() {
               image={suvImage} 
               name="Mercedes-Benz G63 AMG" 
               price="2,500" 
+              offerPrice="2,200"
               badge="Free Delivery"
+              sports
               features={{ seats: 5, fuel: 'Petrol', trans: 'Auto' }}
             />
             <CarCard 
-              image={sportImage} 
+              image={ferrariImage} 
               name="Ferrari F8 Tributo" 
               price="4,200" 
+              offerPrice="3,700"
               badge="Hot Deal"
+              sports
               features={{ seats: 2, fuel: 'Petrol', trans: 'Auto' }}
             />
             <CarCard 
-              image={suvImage} 
+              image={lamborghiniImage} 
               name="Rolls Royce Cullinan" 
               price="6,000" 
+              offerPrice="5,200"
               badge="Premium"
+              sports
               features={{ seats: 5, fuel: 'Petrol', trans: 'Auto' }}
             />
           </div>
@@ -504,13 +510,20 @@ export default function Home() {
             </motion.div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-             {[1, 2, 3, 4].map((item) => (
+             {[
+               { name: 'Rolls Royce Ghost', price: '5,500', offer: '4,800', image: suvImage },
+               { name: 'Bentley Flying Spur', price: '5,200', offer: '4,500', image: suvImage },
+               { name: 'Mercedes-Benz S-Class', price: '4,800', offer: '4,100', image: suvImage },
+               { name: 'BMW 7 Series', price: '4,200', offer: '3,600', image: suvImage }
+             ].map((car, idx) => (
                 <CarCard 
-                  key={item}
-                  image={suvImage} 
-                  name="Rolls Royce Ghost" 
-                  price="5,500" 
+                  key={idx}
+                  image={car.image} 
+                  name={car.name} 
+                  price={car.price}
+                  offerPrice={car.offer}
                   compact
+                  sports
                   features={{ seats: 4, fuel: 'Petrol', trans: 'Auto' }}
                 />
              ))}
@@ -719,6 +732,9 @@ const StandardIcon = ({ className }: { className?: string }) => (
 );
 
 function CarCard({ image, name, price, badge, compact = false, features, offerPrice, sports = false }: { image: string, name: string, price: string, badge?: string, compact?: boolean, features?: any, offerPrice?: string, sports?: boolean }) {
+  // Calculate savings percentage
+  const savingsPercent = offerPrice ? Math.round(((Number(price.replace(/,/g, '')) - Number(offerPrice.replace(/,/g, ''))) / Number(price.replace(/,/g, ''))) * 100) : 0;
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -726,25 +742,31 @@ function CarCard({ image, name, price, badge, compact = false, features, offerPr
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
     >
-      <Card className="overflow-hidden group border-none shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+      <Card className="overflow-hidden group border-none shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-white/95 backdrop-blur">
         <div className="relative h-56 overflow-hidden bg-gray-100">
           <img src={image} alt={name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
           {sports && (
-            <div className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            <div className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
               Free Delivery
             </div>
           )}
           {badge && (
-            <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
               {badge}
             </div>
           )}
+          {sports && offerPrice && (
+            <div className="absolute bottom-3 left-3 bg-red-500 text-white rounded-full px-3 py-2 shadow-lg">
+              <div className="text-xs font-bold">Save</div>
+              <div className="text-lg font-serif font-bold">{savingsPercent}%</div>
+            </div>
+          )}
         </div>
-        <CardContent className="p-6">
-          <h3 className={`${compact ? 'text-lg' : 'text-xl'} font-bold mb-2 text-foreground`}>{name}</h3>
+        <CardContent className="p-5">
+          <h3 className={`${compact ? 'text-lg' : 'text-xl'} font-serif font-bold mb-3 text-foreground`}>{name}</h3>
           
           {features && (
-             <div className="flex gap-4 text-gray-400 text-xs mb-4 border-b border-gray-100 pb-4">
+             <div className="flex gap-3 text-gray-400 text-xs mb-4 border-b border-gray-100 pb-4">
                <div className="flex items-center gap-1"><Armchair className="w-3 h-3" /> {features.seats} Seats</div>
                <div className="flex items-center gap-1"><Fuel className="w-3 h-3" /> {features.fuel}</div>
                <div className="flex items-center gap-1"><Cog className="w-3 h-3" /> {features.trans}</div>
@@ -754,12 +776,12 @@ function CarCard({ image, name, price, badge, compact = false, features, offerPr
           {sports && offerPrice && (
             <div className="mb-4 space-y-2 pb-4 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <span className="text-gray-400 text-sm line-through">AED {price}/day</span>
-                <span className="text-green-600 font-bold text-sm">Save</span>
+                <span className="text-gray-400 text-sm line-through font-medium">AED {price}</span>
+                <span className="text-green-600 font-bold text-xs bg-green-100 px-2 py-1 rounded">Best Price</span>
               </div>
-              <div className="flex items-center gap-1">
-                <span className="text-primary font-bold text-xl">AED {offerPrice}</span>
-                <span className="text-gray-500 text-xs">/month</span>
+              <div className="flex items-baseline gap-1">
+                <span className="text-primary font-serif font-bold text-2xl">AED {offerPrice}</span>
+                <span className="text-gray-500 text-xs">/day</span>
               </div>
             </div>
           )}
@@ -773,15 +795,27 @@ function CarCard({ image, name, price, badge, compact = false, features, offerPr
             </div>
           )}
 
-          <div className="flex items-center justify-between">
-            {!sports && (
+          {sports ? (
+            <div className="flex gap-2">
+              <Button size="sm" className="flex-1 bg-primary hover:bg-primary/90 text-white rounded-lg font-semibold">
+                Book Now
+              </Button>
+              <Button size="sm" variant="outline" className="px-3 rounded-lg border-primary text-primary hover:bg-primary/10">
+                <Phone className="w-4 h-4" />
+              </Button>
+              <Button size="sm" variant="outline" className="px-3 rounded-lg border-green-500 text-green-600 hover:bg-green-50">
+                <MessageCircle className="w-4 h-4" />
+              </Button>
+            </div>
+          ) : (
+            <div className="flex items-center justify-between">
               <div>
                 <span className="text-primary font-bold text-lg">AED {price}</span>
                 <span className="text-gray-400 text-sm"> / day</span>
               </div>
-            )}
-            <Button size="sm" className="bg-primary hover:bg-primary/90 text-white rounded-full">Book Now</Button>
-          </div>
+              <Button size="sm" className="bg-primary hover:bg-primary/90 text-white rounded-full">Book Now</Button>
+            </div>
+          )}
         </CardContent>
       </Card>
     </motion.div>
