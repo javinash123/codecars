@@ -63,6 +63,17 @@ import ferrariImage from "@assets/stock_images/red_ferrari_sports_c_4af35155.jpg
 import mclarenBlueImage from "@assets/stock_images/blue_mclaren_sports__5489a8b2.jpg";
 import mclarenYellowImage from "@assets/stock_images/yellow_mclaren_sport_08c298e0.jpg";
 import lamborghiniImage from "@assets/stock_images/red_lamborghini_spor_7ae12b0f.jpg";
+import rollsRoyceImage from "@assets/stock_images/rolls_royce_ghost_ca_cd0a3cad.jpg";
+import bentleyImage from "@assets/stock_images/bentley_flying_spur__62b86e1e.jpg";
+import mercedesSImage from "@assets/stock_images/mercedes_s-class_sed_a124f049.jpg";
+import bmw7Image from "@assets/stock_images/bmw_7_series_sedan_w_86b024a0.jpg";
+import rakImg from "@assets/stock_images/ras_al_khaimah_skyli_0f376080.jpg";
+import luxuryIconImg from "@assets/generated_images/luxury_sedan_silhouette_icon_style.png";
+import suvIconImg from "@assets/generated_images/luxury_suv_silhouette_icon_style.png";
+import sportsIconImg from "@assets/generated_images/sports_car_silhouette_icon_style.png";
+import convertibleIconImg from "@assets/generated_images/convertible_car_silhouette_icon_style.png";
+import economyIconImg from "@assets/generated_images/economy_car_silhouette_icon_style.png";
+import evIconImg from "@assets/generated_images/electric_car_silhouette_icon_style.png";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -87,14 +98,14 @@ export default function Home() {
   ];
 
   const categories = [
-    { name: "Luxury", icon: LuxuryCar },
-    { name: "SUV", icon: SUVIcon },
-    { name: "Sports", icon: SportsCarIcon },
-    { name: "Convertible", icon: ConvertibleIcon },
-    { name: "Economy", icon: EconomyIcon },
-    { name: "Electric (EV)", icon: EVIcon },
-    { name: "Chauffeur", icon: ChauffeurIcon2 },
-    { name: "Standard", icon: StandardIcon },
+    { name: "Luxury", image: luxuryIconImg },
+    { name: "SUV", image: suvIconImg },
+    { name: "Sports", image: sportsIconImg },
+    { name: "Convertible", image: convertibleIconImg },
+    { name: "Economy", image: economyIconImg },
+    { name: "Electric (EV)", image: evIconImg },
+    { name: "Chauffeur", image: luxuryIconImg },
+    { name: "Standard", image: economyIconImg },
   ];
 
   return (
@@ -361,8 +372,8 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="flex flex-col items-center gap-3 min-w-max hover:scale-110 transition-transform duration-300 cursor-pointer group"
               >
-                <div className="h-16 flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
-                  <cat.icon className="w-12 h-12 text-primary" />
+                <div className="h-16 w-24 flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
+                  <img src={cat.image} alt={cat.name} className="h-full w-full object-contain filter brightness-0" />
                 </div>
                 <span className="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors text-center whitespace-nowrap">{cat.name}</span>
               </motion.div>
@@ -388,7 +399,6 @@ export default function Home() {
               name="Mercedes-Benz G63 AMG" 
               price="2,500" 
               offerPrice="2,200"
-              badge="Free Delivery"
               sports
               features={{ seats: 5, fuel: 'Petrol', trans: 'Auto' }}
             />
@@ -397,7 +407,6 @@ export default function Home() {
               name="Ferrari F8 Tributo" 
               price="4,200" 
               offerPrice="3,700"
-              badge="Hot Deal"
               sports
               features={{ seats: 2, fuel: 'Petrol', trans: 'Auto' }}
             />
@@ -406,7 +415,6 @@ export default function Home() {
               name="Rolls Royce Cullinan" 
               price="6,000" 
               offerPrice="5,200"
-              badge="Premium"
               sports
               features={{ seats: 5, fuel: 'Petrol', trans: 'Auto' }}
             />
@@ -511,10 +519,10 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
              {[
-               { name: 'Rolls Royce Ghost', price: '5,500', offer: '4,800', image: suvImage },
-               { name: 'Bentley Flying Spur', price: '5,200', offer: '4,500', image: suvImage },
-               { name: 'Mercedes-Benz S-Class', price: '4,800', offer: '4,100', image: suvImage },
-               { name: 'BMW 7 Series', price: '4,200', offer: '3,600', image: suvImage }
+               { name: 'Rolls Royce Ghost', price: '5,500', offer: '4,800', image: rollsRoyceImage },
+               { name: 'Bentley Flying Spur', price: '5,200', offer: '4,500', image: bentleyImage },
+               { name: 'Mercedes-Benz S-Class', price: '4,800', offer: '4,100', image: mercedesSImage },
+               { name: 'BMW 7 Series', price: '4,200', offer: '3,600', image: bmw7Image }
              ].map((car, idx) => (
                 <CarCard 
                   key={idx}
@@ -533,6 +541,86 @@ export default function Home() {
             <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
               View All Luxury Cars
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* 11. Rent in UAE Section */}
+      <section className="py-24 bg-gray-50 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2 space-y-8"
+            >
+              <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
+                Elite Service
+              </div>
+              <h2 className="text-5xl font-serif font-bold leading-tight">
+                Rent a Car in UAE <br/> 
+                <span className="text-primary">Without a Deposit</span>
+              </h2>
+              <div className="w-24 h-1 bg-primary"></div>
+              <p className="text-gray-600 text-lg leading-relaxed font-light">
+                Experience the ultimate freedom on the roads of Dubai and Abu Dhabi. We offer a transparent, hassle-free rental process with no hidden fees and zero deposit requirements for premium vehicles.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {[
+                  { title: "No Deposit Required", desc: "Enjoy zero deposit rentals on select luxury models." },
+                  { title: "24/7 Roadside Assistance", desc: "We are always here to help you wherever you are." },
+                  { title: "Free Delivery & Pickup", desc: "Doorstep delivery anywhere in Dubai and Abu Dhabi." },
+                  { title: "Flexible Payments", desc: "We accept all major credit cards, cash, and crypto." }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4 p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-gray-900">{item.title}</h4>
+                      <p className="text-xs text-gray-500 mt-1">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-10 h-14 text-lg shadow-xl shadow-primary/20">
+                Browse Fleet
+              </Button>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2"
+            >
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {[
+                  { name: "Dubai", image: dubaiImg },
+                  { name: "Abu Dhabi", image: abuDhabiImg },
+                  { name: "Sharjah", image: sharjahImg },
+                  { name: "Ajman", image: ajmanImg },
+                  { name: "Fujairah", image: fujairahImg },
+                  { name: "Ras Al Khaimah", image: rakImg }
+                ].map((city, idx) => (
+                  <motion.div 
+                    key={idx}
+                    whileHover={{ scale: 1.05 }}
+                    className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-square shadow-md"
+                  >
+                    <img src={city.image} alt={city.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute bottom-3 left-3 right-3 text-white">
+                      <div className="text-sm font-bold truncate">{city.name}</div>
+                      <div className="text-[10px] text-white/70">View Cars</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -684,50 +772,50 @@ export default function Home() {
 
 // Car Silhouette Icons similar to reference image
 const LuxuryCar = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet">
-    <path d="M15 35 L20 25 L25 20 L35 18 L65 18 L75 20 L80 25 L85 35 L85 42 Q85 45 82 45 L18 45 Q15 45 15 42 Z M28 42 Q26 42 26 40 Q26 38 28 38 Q30 38 30 40 Q30 42 28 42 Z M72 42 Q70 42 70 40 Q70 38 72 38 Q74 38 74 40 Q74 42 72 42 Z M35 35 L65 35 L70 28 L30 28 Z"/>
+  <svg className={className} fill="currentColor" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+    <path d="M10 25 L15 15 L25 10 L45 8 L65 8 L80 12 L88 20 L92 28 L92 32 Q92 35 88 35 L12 35 Q8 35 8 32 Z M25 35 Q22 35 22 32 Q22 29 25 29 Q28 29 28 32 Q28 35 25 35 Z M75 35 Q72 35 72 32 Q72 29 75 29 Q78 29 78 32 Q78 35 75 35 Z M35 25 L75 25 L80 18 L30 18 Z"/>
   </svg>
 );
 
 const SUVIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet">
-    <path d="M12 38 L18 22 L28 15 L72 15 L82 22 L88 38 L88 44 Q88 48 84 48 L16 48 Q12 48 12 44 Z M26 45 Q24 45 24 42 Q24 39 26 39 Q28 39 28 42 Q28 45 26 45 Z M74 45 Q72 45 72 42 Q72 39 74 39 Q76 39 76 42 Q76 45 74 45 Z M32 35 L68 35 L75 25 L25 25 Z"/>
+  <svg className={className} fill="currentColor" viewBox="0 0 100 45" preserveAspectRatio="xMidYMid meet">
+    <path d="M8 32 L15 18 L25 10 L75 10 L85 18 L92 32 L92 38 Q92 42 88 42 L12 42 Q8 42 8 38 Z M22 42 Q19 42 19 38 Q19 34 22 34 Q25 34 25 38 Q25 42 22 42 Z M78 42 Q75 42 75 38 Q75 34 78 34 Q81 34 81 38 Q81 42 78 42 Z M30 30 L70 30 L78 20 L22 20 Z"/>
   </svg>
 );
 
 const SportsCarIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet">
-    <path d="M10 36 L16 20 L35 12 L65 12 L84 20 L90 36 L90 42 Q90 46 86 46 L14 46 Q10 46 10 42 Z M24 43 Q22 43 22 40 Q22 37 24 37 Q26 37 26 40 Q26 43 24 43 Z M76 43 Q74 43 74 40 Q74 37 76 37 Q78 37 78 40 Q78 43 76 43 Z M38 32 L62 32 L72 22 L28 22 Z"/>
+  <svg className={className} fill="currentColor" viewBox="0 0 100 35" preserveAspectRatio="xMidYMid meet">
+    <path d="M5 25 L12 12 L30 6 L70 6 L88 12 L95 25 L95 30 Q95 33 90 33 L10 33 Q5 33 5 30 Z M20 33 Q17 33 17 30 Q17 27 20 27 Q23 27 23 30 Q23 33 20 33 Z M80 33 Q77 33 77 30 Q77 27 80 27 Q83 27 83 30 Q83 33 80 33 Z M35 22 L75 22 L82 14 L28 14 Z"/>
   </svg>
 );
 
 const ConvertibleIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet">
-    <path d="M18 38 L24 24 L40 16 L60 16 L76 24 L82 38 L82 44 Q82 48 78 48 L22 48 Q18 48 18 44 Z M30 45 Q28 45 28 42 Q28 39 30 39 Q32 39 32 42 Q32 45 30 45 Z M70 45 Q68 45 68 42 Q68 39 70 39 Q72 39 72 42 Q72 45 70 45 Z M42 30 L58 30 L68 20 L32 20 Z M44 25 L56 25 L60 18 L40 18 Z"/>
+  <svg className={className} fill="currentColor" viewBox="0 0 100 35" preserveAspectRatio="xMidYMid meet">
+    <path d="M10 25 L18 15 L35 10 L75 10 L85 15 L92 25 L92 30 Q92 33 88 33 L12 33 Q8 33 8 30 Z M25 33 Q22 33 22 30 Q22 27 25 27 Q28 27 28 30 Q28 33 25 33 Z M75 33 Q72 33 72 30 Q72 27 75 27 Q78 27 78 30 Q78 33 75 33 Z M40 22 L75 22 L85 16 L35 16 Z"/>
   </svg>
 );
 
 const EconomyIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet">
-    <path d="M14 37 L20 26 L32 19 L68 19 L80 26 L86 37 L86 43 Q86 47 82 47 L18 47 Q14 47 14 43 Z M28 44 Q26 44 26 41 Q26 38 28 38 Q30 38 30 41 Q30 44 28 44 Z M72 44 Q70 44 70 41 Q70 38 72 38 Q74 38 74 41 Q74 44 72 44 Z M35 33 L65 33 L72 24 L28 24 Z"/>
+  <svg className={className} fill="currentColor" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+    <path d="M15 30 L22 18 L35 12 L65 12 L78 18 L85 30 L85 35 Q85 38 80 38 L20 38 Q15 38 15 35 Z M30 38 Q27 38 27 35 Q27 32 30 32 Q33 32 33 35 Q33 38 30 38 Z M70 38 Q67 38 67 35 Q67 32 70 32 Q73 32 73 35 Q73 38 70 38 Z M38 25 L62 25 L70 18 L30 18 Z"/>
   </svg>
 );
 
 const EVIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet">
-    <path d="M16 38 L22 25 L36 17 L64 17 L78 25 L84 38 L84 44 Q84 48 80 48 L20 48 Q16 48 16 44 Z M30 45 Q28 45 28 42 Q28 39 30 39 Q32 39 32 42 Q32 45 30 45 Z M70 45 Q68 45 68 42 Q68 39 70 39 Q72 39 72 42 Q72 45 70 45 Z M40 32 L60 32 L70 23 L30 23 Z M48 12 L52 12 L52 18 L48 18 Z"/>
+  <svg className={className} fill="currentColor" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+    <path d="M12 28 L18 15 L35 8 L65 8 L82 15 L88 28 L88 33 Q88 36 84 36 L16 36 Q12 36 12 33 Z M28 36 Q25 36 25 33 Q25 30 28 30 Q31 30 31 33 Q31 36 28 36 Z M72 36 Q69 36 69 33 Q69 30 72 30 Q75 30 75 33 Q75 36 72 36 Z M35 24 L65 24 L72 16 L28 16 Z M50 2 L54 6 L46 6 Z"/>
   </svg>
 );
 
 const ChauffeurIcon2 = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet">
-    <path d="M20 40 L26 28 L40 20 L60 20 L74 28 L80 40 L80 46 Q80 50 76 50 L24 50 Q20 50 20 46 Z M34 47 Q32 47 32 44 Q32 41 34 41 Q36 41 36 44 Q36 47 34 47 Z M66 47 Q64 47 64 44 Q64 41 66 41 Q68 41 68 44 Q68 47 66 47 Z M44 34 L56 34 L66 25 L34 25 Z M50 8 Q52 8 52 10 Q52 12 50 12 Q48 12 48 10 Q48 8 50 8 Z"/>
+  <svg className={className} fill="currentColor" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+    <path d="M10 28 L15 15 L25 10 L65 10 L75 15 L80 28 L80 33 Q80 36 76 36 L14 36 Q10 36 10 33 Z M25 36 Q22 36 22 33 Q22 30 25 30 Q28 30 28 33 Q28 36 25 36 Z M65 36 Q62 36 62 33 Q62 30 65 30 Q68 30 68 33 Q68 36 65 36 Z M45 22 L75 22 L78 16 L25 16 Z M50 4 Q53 4 53 7 L47 7 Q47 4 50 4 Z"/>
   </svg>
 );
 
 const StandardIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 100 60" preserveAspectRatio="xMidYMid meet">
-    <path d="M18 38 L24 26 L38 18 L62 18 L76 26 L82 38 L82 44 Q82 48 78 48 L22 48 Q18 48 18 44 Z M32 45 Q30 45 30 42 Q30 39 32 39 Q34 39 34 42 Q34 45 32 45 Z M68 45 Q66 45 66 42 Q66 39 68 39 Q70 39 70 42 Q70 45 68 45 Z M40 32 L60 32 L70 24 L30 24 Z"/>
+  <svg className={className} fill="currentColor" viewBox="0 0 100 40" preserveAspectRatio="xMidYMid meet">
+    <path d="M12 30 L18 18 L32 12 L68 12 L82 18 L88 30 L88 35 Q88 38 84 38 L16 38 Q12 38 12 35 Z M28 38 Q25 38 25 35 Q25 32 28 32 Q31 32 31 35 Q31 38 28 38 Z M72 38 Q69 38 69 35 Q69 32 72 32 Q75 32 75 35 Q75 38 72 38 Z M35 25 L65 25 L72 18 L28 18 Z"/>
   </svg>
 );
 
