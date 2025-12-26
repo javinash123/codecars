@@ -54,11 +54,14 @@ import fujairahImg from "@assets/stock_images/dubai_skyline,_abu_d_15ca0745.jpg"
 import step1Img from "@assets/stock_images/modern_vector_illust_69ed548a.jpg";
 import step2Img from "@assets/stock_images/modern_vector_illust_4dbc8340.jpg";
 import step3Img from "@assets/stock_images/modern_vector_illust_88012a12.jpg";
-import brand1 from "@assets/stock_images/luxury_car_brand_log_b357a37a.jpg";
-import brand2 from "@assets/stock_images/luxury_car_brand_log_6d7ae029.jpg";
-import brand3 from "@assets/stock_images/luxury_car_brand_log_244afc9d.jpg";
-import brand4 from "@assets/stock_images/luxury_car_brand_log_6548590a.jpg";
-import brand5 from "@assets/stock_images/luxury_car_brand_log_56156f1f.jpg";
+import bentleyLogo from "@assets/bentley_1766761549136.png";
+import bmwLogo from "@assets/bmw_1766761549137.png";
+import audiLogo from "@assets/audi_1766761549135.png";
+import ferrariLogo from "@assets/ferrari_1766761549138.png";
+import mclarenLogo from "@assets/mclaren_1766761549139.png";
+import porscheLogo from "@assets/porsche_1766761549140.png";
+import teslaLogo from "@assets/tesla_1766761549142.png";
+import rollsRoyceLogo from "@assets/rolls-royce_1766761549141.png";
 import ferrariImage from "@assets/stock_images/red_ferrari_sports_c_4af35155.jpg";
 import mclarenBlueImage from "@assets/stock_images/blue_mclaren_sports__5489a8b2.jpg";
 import mclarenYellowImage from "@assets/stock_images/yellow_mclaren_sport_08c298e0.jpg";
@@ -373,7 +376,7 @@ export default function Home() {
                 className="flex flex-col items-center gap-3 min-w-max hover:scale-110 transition-transform duration-300 cursor-pointer group"
               >
                 <div className="h-16 w-24 flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
-                  <img src={cat.image} alt={cat.name} className="h-full w-full object-contain filter brightness-0" />
+                  <img src={cat.image} alt={cat.name} className="h-full w-full object-contain" />
                 </div>
                 <span className="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors text-center whitespace-nowrap">{cat.name}</span>
               </motion.div>
@@ -438,19 +441,37 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-            {[brand1, brand2, brand3, brand4, brand5].map((brandImage, idx) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+            {[
+              { logo: bentleyLogo, name: 'Bentley' },
+              { logo: bmwLogo, name: 'BMW' },
+              { logo: audiLogo, name: 'Audi' },
+              { logo: ferrariLogo, name: 'Ferrari' },
+              { logo: mclarenLogo, name: 'McLaren' },
+              { logo: porscheLogo, name: 'Porsche' },
+              { logo: teslaLogo, name: 'Tesla' },
+              { logo: rollsRoyceLogo, name: 'Rolls Royce' }
+            ].map((brand, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="h-32 flex items-center justify-center p-6 rounded-xl border-2 border-gray-100 hover:border-primary hover:shadow-lg hover:bg-primary/5 transition-all duration-300 group cursor-pointer"
+                className="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-gray-100 hover:border-primary hover:shadow-lg hover:bg-primary/5 transition-all duration-300 group cursor-pointer"
               >
-                <img src={brandImage} alt="Brand" className="h-full w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="h-16 w-full flex items-center justify-center">
+                  <img src={brand.logo} alt={brand.name} className="h-full w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <span className="text-xs font-semibold text-gray-700 group-hover:text-primary transition-colors text-center whitespace-nowrap">{brand.name}</span>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
+              View All Brands
+            </Button>
           </div>
         </div>
       </section>
