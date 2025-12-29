@@ -25,7 +25,8 @@ import {
   Zap,
   Compass,
   Award,
-  MessageCircle
+  MessageCircle,
+  Search
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -95,11 +96,65 @@ export default function Home() {
   const navLinks = [
     { name: "Home", href: "#" },
     { name: "Car Rental", href: "#rentals" },
+    { name: "Brands", href: "#brands" },
     { name: "Airport Transfer", href: "#transfer" },
     { name: "Yacht Rental", href: "#yacht" },
     { name: "About Us", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
+
+  const [selectedBrand, setSelectedBrand] = useState("Ferrari");
+
+  const brandCars: { [key: string]: any[] } = {
+    "Ferrari": [
+      { name: 'Ferrari F8 Tributo', price: '8,000', offer: '7,200', image: ferrariImage },
+      { name: 'Ferrari 812 Superfast', price: '9,500', offer: '8,500', image: ferrariImage },
+      { name: 'Ferrari Roma', price: '7,000', offer: '6,300', image: ferrariImage },
+      { name: 'Ferrari Portofino M', price: '6,500', offer: '5,800', image: ferrariImage }
+    ],
+    "BMW": [
+      { name: 'BMW 7 Series', price: '4,200', offer: '3,600', image: bmw7Image },
+      { name: 'BMW X7', price: '2,400', offer: '2,100', image: bmw7Image },
+      { name: 'BMW M440i xDrive', price: '2,200', offer: '1,900', image: bmw7Image },
+      { name: 'BMW 5 Series', price: '1,500', offer: '1,200', image: bmw7Image }
+    ],
+    "Audi": [
+      { name: 'Audi R8 V10', price: '5,500', offer: '4,800', image: ferrariImage },
+      { name: 'Audi A8 L', price: '3,200', offer: '2,800', image: mercedesSImage },
+      { name: 'Audi RS Q8', price: '3,500', offer: '3,100', image: suvImage },
+      { name: 'Audi A6', price: '1,200', offer: '1,000', image: mercedesSImage }
+    ],
+    "Bentley": [
+      { name: 'Bentley Flying Spur', price: '5,200', offer: '4,500', image: bentleyImage },
+      { name: 'Bentley Continental GTC', price: '3,500', offer: '3,100', image: bentleyImage },
+      { name: 'Bentley Bentayga', price: '4,500', offer: '3,900', image: suvImage },
+      { name: 'Bentley Mulsanne', price: '6,000', offer: '5,200', image: bentleyImage }
+    ],
+    "McLaren": [
+      { name: 'McLaren 720S Spider', price: '4,800', offer: '4,410', image: mclarenBlueImage },
+      { name: 'McLaren Artura', price: '3,300', offer: '2,970', image: mclarenYellowImage },
+      { name: 'McLaren 570S', price: '3,000', offer: '2,600', image: mclarenBlueImage },
+      { name: 'McLaren GT', price: '3,500', offer: '3,100', image: mclarenYellowImage }
+    ],
+    "Porsche": [
+      { name: 'Porsche 911 Cabriolet', price: '3,800', offer: '3,400', image: ferrariImage },
+      { name: 'Porsche Cayenne', price: '2,200', offer: '1,900', image: suvImage },
+      { name: 'Porsche Panamera', price: '2,500', offer: '2,200', image: mercedesSImage },
+      { name: 'Porsche Taycan', price: '2,800', offer: '2,400', image: suvImage }
+    ],
+    "Tesla": [
+      { name: 'Tesla Model S Plaid', price: '2,000', offer: '1,800', image: suvImage },
+      { name: 'Tesla Model X', price: '2,200', offer: '2,000', image: suvImage },
+      { name: 'Tesla Model 3', price: '1,200', offer: '1,000', image: suvImage },
+      { name: 'Tesla Model Y', price: '1,500', offer: '1,300', image: suvImage }
+    ],
+    "Rolls Royce": [
+      { name: 'Rolls Royce Ghost', price: '5,500', offer: '4,800', image: rollsRoyceImage },
+      { name: 'Rolls Royce Cullinan', price: '6,000', offer: '5,200', image: lamborghiniImage },
+      { name: 'Rolls Royce Phantom', price: '7,500', offer: '6,500', image: rollsRoyceImage },
+      { name: 'Rolls Royce Wraith', price: '5,000', offer: '4,200', image: rollsRoyceImage }
+    ]
+  };
 
   const categories = [
     { name: "Luxury", image: luxuryIconImg },
@@ -286,42 +341,17 @@ export default function Home() {
 
             {/* Search Bar */}
             <div className="p-6 md:p-8 text-left">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-500 uppercase">Pick-up Location</label>
-                  <Select>
-                    <SelectTrigger className="h-12 border-gray-200 bg-gray-50 text-gray-900">
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-primary" />
-                        <SelectValue placeholder="Dubai International Airport" />
-                      </div>
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="dxb">Dubai Int. Airport (DXB)</SelectItem>
-                      <SelectItem value="downtown">Downtown Dubai</SelectItem>
-                      <SelectItem value="marina">Dubai Marina</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-500 uppercase">Pick-up Date</label>
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-1 space-y-2">
+                  <label className="text-xs font-bold text-gray-500 uppercase">Search</label>
                   <div className="relative">
-                    <Calendar className="absolute left-3 top-3 w-5 h-5 text-primary" />
-                    <Input type="date" className="h-12 pl-10 border-gray-200 bg-gray-50 text-gray-900" />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-500 uppercase">Drop-off Date</label>
-                  <div className="relative">
-                    <Calendar className="absolute left-3 top-3 w-5 h-5 text-primary" />
-                    <Input type="date" className="h-12 pl-10 border-gray-200 bg-gray-50 text-gray-900" />
+                    <Search className="absolute left-3 top-3 w-5 h-5 text-primary" />
+                    <Input placeholder="Search for cars, brands or categories..." className="h-12 pl-10 border-gray-200 bg-gray-50 text-gray-900" />
                   </div>
                 </div>
 
                 <div className="flex items-end">
-                  <Button className="w-full h-12 bg-primary hover:bg-primary/90 text-white text-lg font-semibold rounded-lg">
+                  <Button className="w-full md:w-48 h-12 bg-primary hover:bg-primary/90 text-white text-lg font-semibold rounded-lg">
                     Find a Car
                   </Button>
                 </div>
@@ -342,70 +372,68 @@ export default function Home() {
           </div>
 
           {/* Category Tabs */}
-          <div className="flex justify-center items-center gap-4 overflow-x-auto pb-8 relative">
-            {categories.map((cat, idx) => (
-              <motion.button 
-                key={idx}
-                onClick={() => setSelectedCategory(cat.name)}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                viewport={{ once: true }}
-                className={`flex flex-col items-center gap-3 min-w-max px-6 py-4 rounded-t-xl transition-all duration-300 cursor-pointer group relative ${
-                  selectedCategory === cat.name 
-                    ? 'bg-white border-2 border-primary border-b-4' 
-                    : 'hover:bg-gray-50 border-2 border-transparent'
-                }`}
-              >
-                <div className={`h-12 w-16 flex items-center justify-center transition-transform duration-300 ${selectedCategory === cat.name ? 'scale-110' : 'group-hover:scale-110'}`}>
-                  <img src={cat.image} alt={cat.name} className="h-full w-full object-contain" />
-                </div>
-                <span className={`text-sm font-medium transition-colors text-center whitespace-nowrap ${
-                  selectedCategory === cat.name 
-                    ? 'text-primary font-bold' 
-                    : 'text-gray-700 group-hover:text-primary'
-                }`}>{cat.name}</span>
-              </motion.button>
-            ))}
-            {/* Underline for selected tab */}
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-100"></div>
+          <div className="relative mb-12">
+            <div className="flex items-center justify-between">
+              <div className="flex flex-nowrap gap-2 p-1 bg-gray-100/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-inner overflow-x-auto scrollbar-hide mr-4">
+                {categories.map((cat, idx) => (
+                  <motion.button 
+                    key={idx}
+                    onClick={() => setSelectedCategory(cat.name)}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    viewport={{ once: true }}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-300 cursor-pointer whitespace-nowrap group shrink-0 ${
+                      selectedCategory === cat.name 
+                        ? 'bg-white text-primary shadow-md scale-[1.02] ring-1 ring-black/5' 
+                        : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50/50'
+                    }`}
+                  >
+                    <div className={`h-5 w-7 flex items-center justify-center transition-all duration-300 ${selectedCategory === cat.name ? 'opacity-100 scale-110' : 'opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100'}`}>
+                      <img src={cat.image} alt={cat.name} className="h-full w-full object-contain" />
+                    </div>
+                    <span className={`text-xs font-semibold transition-colors ${
+                      selectedCategory === cat.name ? 'text-primary' : ''
+                    }`}>{cat.name}</span>
+                  </motion.button>
+                ))}
+              </div>
+              <Button variant="outline" size="sm" className="rounded-xl px-6 h-11 shrink-0 border-gray-200 text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 font-semibold shadow-sm">
+                View All Categories
+              </Button>
+            </div>
           </div>
 
-          {/* Divider line and "Selected Category" label */}
-          <motion.div 
-            key={selectedCategory}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center justify-center mt-4 mb-12 gap-3"
-          >
-            <div className="h-0.5 flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">
-              {selectedCategory} Collection
-            </span>
-            <div className="h-0.5 flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-          </motion.div>
-
           {/* Cars for Selected Category */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categoryCars[selectedCategory]?.map((car, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-              >
-                <CarCard 
-                  image={car.image} 
-                  name={car.name} 
-                  price={car.price}
-                  offerPrice={car.offer}
-                  compact
-                  sports
-                  features={{ seats: 4, fuel: 'Petrol', trans: 'Auto' }}
-                />
-              </motion.div>
-            ))}
+          <div className="relative">
+            <motion.div 
+              key={selectedCategory}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
+              {categoryCars[selectedCategory]?.map((car, idx) => (
+                <div key={`${selectedCategory}-${idx}`}>
+                  <CarCard 
+                    image={car.image} 
+                    name={car.name} 
+                    price={car.price}
+                    offerPrice={car.offer}
+                    compact
+                    sports
+                    features={{ seats: 4, fuel: 'Petrol', trans: 'Auto' }}
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
+              View All {selectedCategory} Cars
+            </Button>
           </div>
         </div>
       </section>
@@ -421,7 +449,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <CarCard 
               image={suvImage} 
               name="Mercedes-Benz G63 AMG" 
@@ -446,6 +474,14 @@ export default function Home() {
               sports
               features={{ seats: 5, fuel: 'Petrol', trans: 'Auto' }}
             />
+            <CarCard 
+              image={mclarenBlueImage} 
+              name="McLaren 720S Spider" 
+              price="4,800" 
+              offerPrice="4,410"
+              sports
+              features={{ seats: 2, fuel: 'Petrol', trans: 'Auto' }}
+            />
           </div>
 
           <div className="mt-12 text-center">
@@ -456,47 +492,99 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Brands - Modern with Logos & Heading */}
-      <section className="py-16 bg-white">
+      {/* 7. Brands - Sidebar with Cars Display */}
+      <section className="py-16 bg-white" id="brands">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
               <h2 className="text-4xl font-thin font-serif mb-4">Premium Brands</h2>
               <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light italic">Select your preferred manufacturer to see our exclusive fleet</p>
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-            {[
-              { logo: bentleyLogo, name: 'Bentley' },
-              { logo: bmwLogo, name: 'BMW' },
-              { logo: audiLogo, name: 'Audi' },
-              { logo: ferrariLogo, name: 'Ferrari' },
-              { logo: mclarenLogo, name: 'McLaren' },
-              { logo: porscheLogo, name: 'Porsche' },
-              { logo: teslaLogo, name: 'Tesla' },
-              { logo: rollsRoyceLogo, name: 'Rolls Royce' }
-            ].map((brand, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-gray-100 hover:border-primary hover:shadow-lg hover:bg-primary/5 transition-all duration-300 group cursor-pointer"
-              >
-                <div className="h-16 w-full flex items-center justify-center">
-                  <img src={brand.logo} alt={brand.name} className="h-full w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <span className="text-xs font-semibold text-gray-700 group-hover:text-primary transition-colors text-center whitespace-nowrap">{brand.name}</span>
-              </motion.div>
-            ))}
-          </div>
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Brands Sidebar */}
+            <div className="lg:w-1/5">
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-1 gap-3">
+                {[
+                  { logo: ferrariLogo, name: 'Ferrari' },
+                  { logo: rollsRoyceLogo, name: 'Rolls Royce' },
+                  { logo: bentleyLogo, name: 'Bentley' },
+                  { logo: porscheLogo, name: 'Porsche' },
+                  { logo: mclarenLogo, name: 'McLaren' },
+                  { logo: bmwLogo, name: 'BMW' },
+                  { logo: audiLogo, name: 'Audi' },
+                  { logo: teslaLogo, name: 'Tesla' }
+                ].map((brand, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    viewport={{ once: true }}
+                    onClick={() => setSelectedBrand(brand.name)}
+                    className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all duration-300 group cursor-pointer ${
+                      selectedBrand === brand.name 
+                        ? 'border-primary bg-primary/5 shadow-md' 
+                        : 'border-gray-100 hover:border-primary/50 hover:bg-gray-50'
+                    }`}
+                  >
+                    <div className="h-10 w-10 flex-shrink-0 flex items-center justify-center bg-white rounded-lg p-1">
+                      <img src={brand.logo} alt={brand.name} className={`h-full w-full object-contain transition-all duration-300 ${selectedBrand === brand.name ? 'opacity-100' : 'opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100'}`} />
+                    </div>
+                    <span className={`text-sm font-semibold transition-colors ${selectedBrand === brand.name ? 'text-primary' : 'text-gray-700'}`}>
+                      {brand.name}
+                    </span>
+                  </motion.div>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <Button variant="outline" className="w-full flex items-center justify-center gap-2 p-4 h-auto rounded-xl border-2 border-gray-100 text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 font-semibold text-sm">
+                    View All Brands
+                  </Button>
+                </motion.div>
+              </div>
+            </div>
 
-          <div className="mt-12 text-center">
-            <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
-              View All Brands
-            </Button>
+            {/* Brand Cars Display */}
+            <div className="lg:w-4/5">
+              <div className="relative">
+                <AnimatePresence mode="wait">
+                  <motion.div 
+                    key={selectedBrand}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4 }}
+                    className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"
+                  >
+                    {brandCars[selectedBrand]?.map((car, carIdx) => (
+                      <CarCard 
+                        key={`${selectedBrand}-${carIdx}`}
+                        image={car.image} 
+                        name={car.name} 
+                        price={car.price}
+                        offerPrice={car.offer}
+                        compact
+                        sports
+                        features={{ seats: 2, fuel: 'Petrol', trans: 'Auto' }}
+                      />
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+              
+              <div className="mt-12 text-center">
+                <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
+                  View All {selectedBrand} Cars
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -887,12 +975,6 @@ function CarCard({ image, name, price, badge, compact = false, features, offerPr
           {badge && (
             <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
               {badge}
-            </div>
-          )}
-          {sports && offerPrice && (
-            <div className="absolute bottom-3 left-3 bg-red-500 text-white rounded-full px-3 py-2 shadow-lg">
-              <div className="text-xs font-bold">Save</div>
-              <div className="text-lg font-serif font-bold">{savingsPercent}%</div>
             </div>
           )}
         </div>
