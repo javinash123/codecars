@@ -82,6 +82,7 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("car-rental");
+  const [selectedCategory, setSelectedCategory] = useState("Luxury");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,6 +111,57 @@ export default function Home() {
     { name: "Chauffeur", image: luxuryIconImg },
     { name: "Standard", image: economyIconImg },
   ];
+
+  const categoryCars: { [key: string]: any[] } = {
+    "Luxury": [
+      { name: 'Rolls Royce Ghost', price: '5,500', offer: '4,800', image: rollsRoyceImage },
+      { name: 'Bentley Flying Spur', price: '5,200', offer: '4,500', image: bentleyImage },
+      { name: 'Mercedes-Benz S-Class', price: '4,800', offer: '4,100', image: mercedesSImage },
+      { name: 'BMW 7 Series', price: '4,200', offer: '3,600', image: bmw7Image }
+    ],
+    "Sports": [
+      { name: 'Ferrari F8 Tributo', price: '8,000', offer: '7,200', image: ferrariImage },
+      { name: 'McLaren (Blue)', price: '4,800', offer: '4,410', image: mclarenBlueImage },
+      { name: 'McLaren (Yellow)', price: '3,300', offer: '2,970', image: mclarenYellowImage },
+      { name: 'Lamborghini', price: '4,000', offer: '2,600', image: lamborghiniImage }
+    ],
+    "SUV": [
+      { name: 'Mercedes-Benz G63 AMG', price: '2,500', offer: '2,200', image: suvImage },
+      { name: 'BMW X7', price: '2,400', offer: '2,100', image: bmw7Image },
+      { name: 'Range Rover', price: '2,300', offer: '2,000', image: suvImage },
+      { name: 'Porsche Cayenne', price: '2,200', offer: '1,900', image: suvImage }
+    ],
+    "Convertible": [
+      { name: 'Bentley Continental GTC', price: '3,500', offer: '3,100', image: bentleyImage },
+      { name: 'Mercedes-AMG C63 Cabriolet', price: '2,800', offer: '2,400', image: mercedesSImage },
+      { name: 'BMW M440i xDrive', price: '2,200', offer: '1,900', image: bmw7Image },
+      { name: 'Porsche 911 Cabriolet', price: '3,800', offer: '3,400', image: ferrariImage }
+    ],
+    "Economy": [
+      { name: 'Toyota Corolla', price: '600', offer: '500', image: suvImage },
+      { name: 'Hyundai Elantra', price: '550', offer: '450', image: suvImage },
+      { name: 'Nissan Altima', price: '650', offer: '550', image: suvImage },
+      { name: 'Honda Civic', price: '620', offer: '520', image: suvImage }
+    ],
+    "Electric (EV)": [
+      { name: 'Tesla Model S', price: '2,000', offer: '1,800', image: suvImage },
+      { name: 'Tesla Model X', price: '2,200', offer: '2,000', image: suvImage },
+      { name: 'BMW i7', price: '2,400', offer: '2,100', image: bmw7Image },
+      { name: 'Mercedes EQS', price: '2,300', offer: '2,000', image: mercedesSImage }
+    ],
+    "Chauffeur": [
+      { name: 'Rolls Royce Ghost', price: '6,500', offer: '5,800', image: rollsRoyceImage },
+      { name: 'Bentley Flying Spur', price: '6,200', offer: '5,500', image: bentleyImage },
+      { name: 'Mercedes-Maybach S580', price: '5,800', offer: '5,100', image: mercedesSImage },
+      { name: 'BMW 7 Series', price: '5,200', offer: '4,600', image: bmw7Image }
+    ],
+    "Standard": [
+      { name: 'Toyota Camry', price: '700', offer: '600', image: suvImage },
+      { name: 'Honda Accord', price: '720', offer: '620', image: suvImage },
+      { name: 'Nissan Maxima', price: '750', offer: '650', image: suvImage },
+      { name: 'Volkswagen Passat', price: '680', offer: '580', image: suvImage }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground overflow-x-hidden">
@@ -279,83 +331,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. How It Works - Premium Modern Flow */}
-      <section className="py-16 bg-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-24">
-            <motion.div initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-              <h2 className="text-4xl font-thin font-serif mb-4">The Seamless Experience</h2>
-              <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light italic">Your journey to luxury starts here</p>
-            </motion.div>
-          </div>
-
-          <div className="relative">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 relative z-10">
-              {[
-                { 
-                  icon: Car, 
-                  title: "1. Select Category", 
-                  step: "01",
-                  desc: "Browse our premium fleet and select your preferred car category or brand.",
-                  color: "from-blue-500/10 to-transparent"
-                },
-                { 
-                  icon: Compass, 
-                  title: "2. Select Model", 
-                  step: "02",
-                  desc: "Choose the specific luxury model that fits your style and requirements.",
-                  color: "from-primary/10 to-transparent"
-                },
-                { 
-                  icon: CreditCard, 
-                  title: "3. Make Payment", 
-                  step: "03",
-                  desc: "Confirm your booking with our secure and fast payment process.",
-                  color: "from-amber-500/10 to-transparent"
-                },
-              ].map((item, idx) => (
-                <motion.div 
-                  key={idx} 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: idx * 0.2 }}
-                  viewport={{ once: true }}
-                  className="group relative"
-                >
-                  <div className={`absolute -inset-4 bg-gradient-to-br ${item.color} rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`} />
-                  
-                  <div className="relative flex flex-col items-center">
-                    <div className="mb-8 relative">
-                      <div className="w-24 h-24 rounded-full bg-white shadow-2xl flex items-center justify-center group-hover:bg-primary transition-all duration-500 relative z-10 border border-gray-50">
-                        <item.icon className="w-10 h-10 text-primary group-hover:text-white transition-colors duration-500" />
-                      </div>
-                      <span className="absolute -top-6 -right-6 text-7xl font-serif font-black text-gray-200/80 group-hover:text-primary/20 transition-all duration-500 -z-0">
-                        {item.step}
-                      </span>
-                    </div>
-
-                    <h3 className="text-2xl font-serif font-bold mb-4 text-foreground text-center">{item.title}</h3>
-                    <p className="text-gray-500 leading-relaxed text-center font-light text-sm md:text-base max-w-sm">
-                      {item.desc}
-                    </p>
-                    
-                    <div className="mt-8 w-12 h-1 bg-gray-100 group-hover:w-24 group-hover:bg-primary transition-all duration-500" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="mt-24 text-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-12 h-14 text-lg shadow-xl hover:shadow-primary/20 transition-all hover:-translate-y-1">
-              Start Your Booking
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Car Categories - One Row with Silhouette Icons */}
+      {/* 5. Car Categories - Tabbed Interface */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -365,27 +341,76 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="flex justify-center items-center gap-4 overflow-x-auto pb-6">
+          {/* Category Tabs */}
+          <div className="flex justify-center items-center gap-4 overflow-x-auto pb-8 relative">
             {categories.map((cat, idx) => (
-              <motion.div 
+              <motion.button 
                 key={idx}
+                onClick={() => setSelectedCategory(cat.name)}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
                 viewport={{ once: true }}
-                className="flex flex-col items-center gap-3 min-w-max hover:scale-110 transition-transform duration-300 cursor-pointer group"
+                className={`flex flex-col items-center gap-3 min-w-max px-6 py-4 rounded-t-xl transition-all duration-300 cursor-pointer group relative ${
+                  selectedCategory === cat.name 
+                    ? 'bg-white border-2 border-primary border-b-4' 
+                    : 'hover:bg-gray-50 border-2 border-transparent'
+                }`}
               >
-                <div className="h-16 w-24 flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
+                <div className={`h-12 w-16 flex items-center justify-center transition-transform duration-300 ${selectedCategory === cat.name ? 'scale-110' : 'group-hover:scale-110'}`}>
                   <img src={cat.image} alt={cat.name} className="h-full w-full object-contain" />
                 </div>
-                <span className="text-sm font-medium text-gray-700 group-hover:text-primary transition-colors text-center whitespace-nowrap">{cat.name}</span>
+                <span className={`text-sm font-medium transition-colors text-center whitespace-nowrap ${
+                  selectedCategory === cat.name 
+                    ? 'text-primary font-bold' 
+                    : 'text-gray-700 group-hover:text-primary'
+                }`}>{cat.name}</span>
+              </motion.button>
+            ))}
+            {/* Underline for selected tab */}
+            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-100"></div>
+          </div>
+
+          {/* Divider line and "Selected Category" label */}
+          <motion.div 
+            key={selectedCategory}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="flex items-center justify-center mt-4 mb-12 gap-3"
+          >
+            <div className="h-0.5 flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">
+              {selectedCategory} Collection
+            </span>
+            <div className="h-0.5 flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+          </motion.div>
+
+          {/* Cars for Selected Category */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {categoryCars[selectedCategory]?.map((car, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <CarCard 
+                  image={car.image} 
+                  name={car.name} 
+                  price={car.price}
+                  offerPrice={car.offer}
+                  compact
+                  sports
+                  features={{ seats: 4, fuel: 'Petrol', trans: 'Auto' }}
+                />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 7. Bestseller Cars */}
+      {/* 6. Bestseller Cars */}
       <section className="py-16 bg-gray-50" id="rentals">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -431,7 +456,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. Brands - Modern with Logos & Heading */}
+      {/* 7. Brands - Modern with Logos & Heading */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -476,7 +501,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. Sports Cars */}
+      {/* 8. Sports Cars */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -514,7 +539,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. Promo Banner - Moved Above Luxury Collection */}
+      {/* 9. Promo Banner - Moved Above Luxury Collection */}
       <section className="relative py-24 bg-black overflow-hidden">
         <div className="absolute inset-0 opacity-40">
            <img src={sportImage} className="w-full h-full object-cover" alt="Promo" />
@@ -528,7 +553,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9.5 Luxury Car Collection */}
+      {/* 10. Luxury Car Collection */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
