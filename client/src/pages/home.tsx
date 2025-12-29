@@ -37,6 +37,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
@@ -47,6 +48,8 @@ import heroImage from "@assets/generated_images/five_luxury_supercars_lined_up_f
 import yachtImage from "@assets/generated_images/luxury_yacht_in_dubai_marina.png";
 import suvImage from "@assets/stock_images/luxury_suv_black_mer_79016e67.jpg";
 import sportImage from "@assets/stock_images/red_ferrari_sports_c_60c5bd94.jpg";
+import bollywoodCelebImg from "@assets/stock_images/bollywood_celebritie_98041e71.jpg";
+import f1RacingImg from "@assets/stock_images/formula_1_racing_car_57018fd2.jpg";
 import dubaiImg from "@assets/stock_images/dubai_skyline,_abu_d_cbc28aa7.jpg";
 import abuDhabiImg from "@assets/stock_images/dubai_skyline,_abu_d_43901737.jpg";
 import sharjahImg from "@assets/stock_images/dubai_skyline,_abu_d_5e56b4ed.jpg";
@@ -72,6 +75,10 @@ import bentleyImage from "@assets/stock_images/bentley_flying_spur__62b86e1e.jpg
 import mercedesSImage from "@assets/stock_images/mercedes_s-class_sed_a124f049.jpg";
 import bmw7Image from "@assets/stock_images/bmw_7_series_sedan_w_86b024a0.jpg";
 import rakImg from "@assets/stock_images/ras_al_khaimah_skyli_0f376080.jpg";
+import emiratesLogo from "@assets/stock_images/emirates_airline_log_d41d5c5d.jpg";
+import burjKhalifaLogo from "@assets/stock_images/burj_khalifa_logo_wh_99a50465.jpg";
+import forbesLogo from "@assets/stock_images/forbes_logo_white_ba_0bbc5780.jpg";
+import palmJumeirahLogo from "@assets/stock_images/palm_jumeirah_logo_w_d07c7dda.jpg";
 import luxuryIconImg from "@assets/generated_images/luxury_sedan_silhouette_icon_style.png";
 import suvIconImg from "@assets/generated_images/luxury_suv_silhouette_icon_style.png";
 import sportsIconImg from "@assets/generated_images/sports_car_silhouette_icon_style.png";
@@ -373,8 +380,8 @@ export default function Home() {
 
           {/* Category Tabs */}
           <div className="relative mb-12">
-            <div className="flex items-center justify-between">
-              <div className="flex flex-nowrap gap-2 p-1 bg-gray-100/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-inner overflow-x-auto scrollbar-hide mr-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="w-full md:w-auto flex flex-nowrap gap-2 p-1 bg-gray-100/80 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-inner overflow-x-auto scrollbar-hide pb-2 md:pb-1 snap-x snap-mandatory">
                 {categories.map((cat, idx) => (
                   <motion.button 
                     key={idx}
@@ -383,7 +390,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: idx * 0.05 }}
                     viewport={{ once: true }}
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-300 cursor-pointer whitespace-nowrap group shrink-0 ${
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-300 cursor-pointer whitespace-nowrap group shrink-0 snap-center ${
                       selectedCategory === cat.name 
                         ? 'bg-white text-primary shadow-md scale-[1.02] ring-1 ring-black/5' 
                         : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50/50'
@@ -398,7 +405,7 @@ export default function Home() {
                   </motion.button>
                 ))}
               </div>
-              <Button variant="outline" size="sm" className="rounded-xl px-6 h-11 shrink-0 border-gray-200 text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 font-semibold shadow-sm">
+              <Button variant="outline" size="sm" className="hidden md:flex rounded-xl px-6 h-11 shrink-0 border-gray-200 text-gray-600 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 font-semibold shadow-sm">
                 View All Categories
               </Button>
             </div>
@@ -488,6 +495,39 @@ export default function Home() {
             <Button variant="outline" size="lg" className="rounded-full px-10 h-14 hover:bg-primary hover:text-white transition-all duration-300">
               View All Bestsellers
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Official Partners Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="bg-primary rounded-3xl p-8 md:p-10 shadow-lg border-2 border-primary-foreground/10">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+              <div className="text-center lg:text-left lg:max-w-xs shrink-0">
+                <h3 className="text-2xl font-serif font-bold text-black mb-2 tracking-tight">Official Partners</h3>
+                <p className="text-xs text-black/70 font-medium tracking-wide leading-relaxed">
+                  Trusted luxury partnerships across the UAE.
+                </p>
+              </div>
+              
+              <div className="flex flex-wrap items-center justify-center lg:justify-end gap-10 md:gap-16 flex-1">
+                {['Emirates', 'Burj Khalifa', 'Forbes', 'Palm Jumeirah'].map((partner, idx) => (
+                  <motion.div 
+                    key={partner}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center gap-3 group"
+                  >
+                    <span className="text-xl md:text-2xl font-serif font-bold text-black tracking-tighter hover:scale-110 transition-transform cursor-default">
+                      {partner}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -585,6 +625,49 @@ export default function Home() {
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Celebrity & Formula 1 Section */}
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            {/* Celebrity Partner Section */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative group rounded-3xl overflow-hidden shadow-2xl min-h-[500px] flex flex-col justify-end p-8 md:p-12"
+            >
+              <img src={bollywoodCelebImg} alt="Bollywood Celebrities" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+              <div className="relative z-10">
+                <Badge className="bg-primary text-white border-0 mb-4 px-4 py-1 text-xs uppercase tracking-widest font-bold">Exclusive Partners</Badge>
+                <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4 leading-tight">Bollywood Elite's Choice</h3>
+                <p className="text-white/80 text-lg mb-8 max-w-md font-light">Join the stars. We are the official car rental partner for India's biggest celebrities in Dubai.</p>
+                <Button className="bg-white text-primary hover:bg-primary hover:text-white rounded-full px-8 h-12 font-bold transition-all duration-300">Explore Celebrity Fleet</Button>
+              </div>
+            </motion.div>
+
+            {/* Formula 1 Package Section */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative group rounded-3xl overflow-hidden shadow-2xl min-h-[500px] flex flex-col justify-end p-8 md:p-12"
+            >
+              <img src={f1RacingImg} alt="Formula 1 Experience" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+              <div className="relative z-10">
+                <Badge className="bg-red-600 text-white border-0 mb-4 px-4 py-1 text-xs uppercase tracking-widest font-bold">New: F1 Package</Badge>
+                <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4 leading-tight">Formula 1 VIP Experience</h3>
+                <p className="text-white/80 text-lg mb-8 max-w-md font-light">Experience the Yas Marina Circuit with our exclusive F1 track days and premium hospitality packages.</p>
+                <Button className="bg-red-600 text-white hover:bg-red-700 rounded-full px-8 h-12 font-bold transition-all duration-300">Book F1 Package</Button>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -756,6 +839,41 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Google Reviews Banner */}
+      <section className="py-12 bg-gray-900 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16"
+          >
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+              <div className="flex items-center gap-1 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">4.9+ Google Rating</h2>
+              <p className="text-gray-400 text-lg">Based on over 2,000+ verified reviews</p>
+            </div>
+            <div className="w-px h-16 bg-gray-800 hidden md:block" />
+            <div className="text-center md:text-left">
+              <div className="flex items-center gap-4 justify-center md:justify-start">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-2 shadow-lg">
+                  <svg viewBox="0 0 24 24" className="w-full h-full"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Top Rated Provider</h3>
+                  <p className="text-primary font-semibold">Most Trusted in Dubai</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
